@@ -1,4 +1,4 @@
-import { AboutMe, Achivements, Blog, Home, Projects, ReachMe, WhoWatching } from '@/Pages'
+import { AboutMe, Achivements, Blog, BlogPost, Home, Landing, Projects, ReachMe, WhoWatching } from '@/Pages'
 import store from '@/store/store.js'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
@@ -6,6 +6,7 @@ import { Provider } from 'react-redux'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import App from './App.jsx'
 import './index.css'
+import CheckWatching from './components/CheckWatching.jsx'
 
 
 const routes = createBrowserRouter(
@@ -16,31 +17,35 @@ const routes = createBrowserRouter(
       children: [
         {
           path: "",
-          element: <WhoWatching />
+          element: <Landing />
         },
         {
-          path: "/home",
-          element: <Home />
+          path: "home",
+          element: <CheckWatching><Home /></CheckWatching>
         },
         {
           path: "introduction",
-          element: <AboutMe />
+          element: <CheckWatching><AboutMe /></CheckWatching>
         },
         {
           path: "awards",
-          element: <Achivements />
+          element: <CheckWatching><Achivements /></CheckWatching>
         },
         {
           path: "documentary",
-          element: <Blog />
+          element: <CheckWatching><Blog /></CheckWatching>
+        },
+        {
+          path: "documentary/:slug",
+          element: <CheckWatching><BlogPost /></CheckWatching>
         },
         {
           path: "originals",
-          element: <Projects />
+          element: <CheckWatching><Projects /></CheckWatching>
         },
         {
           path: "contact",
-          element: <ReachMe />
+          element: <CheckWatching><ReachMe /></CheckWatching>
         }
       ]
     }

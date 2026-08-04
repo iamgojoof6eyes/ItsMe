@@ -1,6 +1,7 @@
 import AboutMe from './AboutMe'
 import Achivements from './Achivements'
 import Blog from './Blog'
+import BlogPost from './BlogPost'
 import Home from './Home'
 import Projects from './Projects'
 import ReachMe from './ReachMe'
@@ -10,6 +11,12 @@ import WhoWatching from './WhoWatching'
 export {
     AboutMe,
     Achivements,
-    Blog, Home, Projects,
-    ReachMe, Landing, WhoWatching
+    Blog,
+    BlogPost,
+    Home,
+    Projects,
+    ReachMe,
+    Landing,
+    WhoWatching
 }
+
