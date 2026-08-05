@@ -125,7 +125,7 @@ export default function AboutMe() {
   const [activeEpisode, setActiveEpisode] = useState(0);
   const [activeSeasonFilter, setActiveSeasonFilter] = useState("All");
 
-  const resumeUrl = "https://drive.google.com"; // Replace with direct resume PDF or Google Drive URL if desired
+  const resumeUrl = "https://drive.google.com/file/d/1i8elc-nqV6XxwDNhmWGEEtGkwl_d4aSV/view?usp=drive_link"; // Replace with direct resume PDF or Google Drive URL if desired
 
   return (
     <div className="min-h-screen bg-black text-white pb-24">
