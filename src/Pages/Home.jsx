@@ -158,383 +158,379 @@ export default function Home() {
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
               {renderSimpleCard("About Me / Behind Scenes", "Biography", "Full Story & Principles", "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=800&auto=format&fit=crop", () => navigate("/introduction"), "99% Match")}
-              {renderSimpleCard("React 19 & Next.js", "Frontend", "Hooks, SSR, State", "https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=800&auto=format&fit=crop", () => navigate("/originals"), "99% Skill Match")}
-              {renderSimpleCard("System & Architecture", "Architecture", "Scalable APIs, Modular Code", "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop", () => navigate("/documentary"), "98% Skill Match")}
-              {renderSimpleCard("Node.js & Appwrite", "Backend", "REST APIs, Auth, DB", "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop", () => navigate("/originals"), "97% Skill Match")}
             </div>
-          </div>
 
-          <div>
-            <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-              <span className="h-4 w-1 bg-red-600 rounded-full inline-block" />
-              Technical Writing & System Docs
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-              {blogs.map((b) => (
-                <div key={b.slug} className="aspect-video w-full">
-                  <BlogCard blog={b} onMoreInfo={(blog) => setPreviewBlog(blog)} />
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="rounded-xl bg-gradient-to-r from-zinc-900 via-zinc-900 to-red-950/40 p-8 border border-zinc-800 flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
-              <span className="text-xs font-bold text-red-500 uppercase tracking-widest">
-                RECRUITER QUICK ACTION
-              </span>
-              <h3 className="text-2xl font-bold text-white mt-1">Interested in working together?</h3>
-              <p className="text-zinc-400 text-sm mt-1">
-                Reach out directly via email, GitHub, or LinkedIn to schedule an interview or request code samples.
-              </p>
-            </div>
-            <button
-              onClick={() => navigate("/contact")}
-              className="rounded-lg bg-red-600 px-8 py-3.5 font-bold text-white transition hover:bg-red-700 hover:scale-105 cursor-pointer whitespace-nowrap shadow-lg"
-            >
-              Contact Candidate Now →
-            </button>
-          </div>
-        </div>
-
-        {previewBlog && (
-          <BlogPreviewModal blog={previewBlog} allBlogs={blogs} onClose={() => setPreviewBlog(null)} />
-        )}
-      </div>
-    );
-  }
-
-  // -------------------------------------------------------------
-  // DEVELOPER VIEW
-  // -------------------------------------------------------------
-  if (profileId.includes("developer")) {
-    return (
-      <div className="min-h-screen bg-black text-white pb-24 font-mono">
-        {/* Developer Active Profile Bar */}
-        <div className="bg-zinc-900/90 px-6 py-3 border-b border-zinc-800 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <Terminal className="h-4 w-4 text-emerald-400" />
-            <span className="text-xs text-zinc-300">
-              Active Environment: <strong className="text-emerald-400">Developer Command Center</strong>
-            </span>
-            <span className="rounded bg-emerald-950 px-2 py-0.5 text-[10px] text-emerald-400 border border-emerald-800/50">
-              DEV MODE
-            </span>
-          </div>
-          <button
-            onClick={handleSwitchProfile}
-            className="text-xs text-zinc-400 hover:text-white transition cursor-pointer font-sans"
-          >
-            Switch Profile →
-          </button>
-        </div>
-
-        {/* Hero Billboard */}
-        <section className="relative h-[65vh] min-h-[480px] w-full overflow-hidden">
-          <img
-            src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop"
-            alt="Developer View"
-            className="h-full w-full object-cover opacity-80"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
-
-          <div className="absolute bottom-16 left-0 right-0 mx-auto max-w-7xl px-6 md:px-12 font-sans">
-            <div className="mb-3 flex items-center gap-2">
-              <img src={Logo} alt="R" className="h-7 w-auto drop-shadow-[0_0_10px_rgba(229,9,20,0.9)]" />
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-red-500">
-                ARCHITECTURE & DEV LAB
-              </span>
-            </div>
-
-            <h1 className="text-4xl md:text-6xl font-extrabold text-white max-w-3xl leading-tight">
-              Dev Terminal & Codebases
-            </h1>
-
-            <div className="mt-4 flex items-center gap-3 text-sm font-semibold">
-              <span className="text-emerald-400 font-bold font-mono">STATUS: 200 OK</span>
-              <span className="border border-zinc-700 px-2 py-0.5 text-xs text-zinc-300 rounded font-mono">
-                Vite 8 + React 19 + Tailwind v4
-              </span>
-            </div>
-
-            <p className="mt-4 max-w-2xl text-zinc-300 text-base md:text-lg">
-              Explore state isolation, Redux Toolkit slices, dynamic import modules, custom hooks, and markdown parsing workflows used across this project.
-            </p>
-
-            <div className="mt-8 flex flex-wrap gap-4">
-              <button
-                onClick={() => navigate("/introduction")}
-                className="flex items-center gap-2 rounded bg-red-600 px-7 py-3 font-bold text-white transition hover:bg-red-700 hover:scale-105 cursor-pointer shadow-lg"
-              >
-                <UserCheck className="h-5 w-5" />
-                <span>Behind The Scenes / About Me →</span>
-              </button>
-              <button
-                onClick={() => navigate("/documentary")}
-                className="flex items-center gap-2 rounded bg-zinc-800 px-6 py-3 font-semibold text-white border border-zinc-700 hover:bg-zinc-700 transition cursor-pointer"
-              >
-                <FileText className="h-5 w-5 text-red-500" />
-                <span>Read Tech Articles</span>
-              </button>
-              <button
-                onClick={() => navigate("/originals")}
-                className="flex items-center gap-2 rounded bg-zinc-800 px-6 py-3 font-semibold text-white border border-zinc-700 hover:bg-zinc-700 transition cursor-pointer"
-              >
-                <Code className="h-5 w-5 text-emerald-400" />
-                <span>Browse Code Projects</span>
-              </button>
-            </div>
-          </div>
-        </section>
-
-        {/* Developer Section Rows */}
-        <div className="mx-auto max-w-7xl px-6 md:px-12 mt-8 space-y-10 font-sans">
-          <div>
-            <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2 font-mono">
-              <span className="h-4 w-1 bg-red-600 rounded-full inline-block" />
-              Dev Tech Stack & Dependencies
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-              {renderSimpleCard("About Me / Behind Scenes", "Biography", "Full Story & Principles", "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=800&auto=format&fit=crop", () => navigate("/introduction"), "99% Match")}
-              {renderSimpleCard("React 19 & DOM", "Framework", "v19.2.8", "https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=800&auto=format&fit=crop", () => navigate("/originals"), "100% Match")}
-              {renderSimpleCard("Vite 8 & ESBuild", "Bundler", "Instant HMR", "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop", () => navigate("/documentary"), "99% Match")}
-              {renderSimpleCard("Redux Toolkit", "State Machine", "Slice & Dispatch", "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop", () => navigate("/originals"), "98% Match")}
-            </div>
-          </div>
-
-          <div>
-            <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-              <span className="h-4 w-1 bg-red-600 rounded-full inline-block" />
-              Architecture & Tech Documentaries
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-              {blogs.map((b) => (
-                <div key={b.slug} className="aspect-video w-full">
-                  <BlogCard blog={b} onMoreInfo={(blog) => setPreviewBlog(blog)} />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {previewBlog && (
-          <BlogPreviewModal blog={previewBlog} allBlogs={blogs} onClose={() => setPreviewBlog(null)} />
-        )}
-      </div>
-    );
-  }
-
-  // -------------------------------------------------------------
-  // READER VIEW
-  // -------------------------------------------------------------
-  if (profileId.includes("reader")) {
-    return (
-      <div className="min-h-screen bg-black text-white pb-24">
-        {/* Reader Active Profile Bar */}
-        <div className="bg-zinc-900 px-6 py-3 border-b border-zinc-800 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <BookOpen className="h-4 w-4 text-red-500" />
-            <span className="text-xs font-semibold text-zinc-300">
-              Profile: <strong className="text-white">Reader & Article Enthusiast</strong>
-            </span>
-          </div>
-          <button
-            onClick={handleSwitchProfile}
-            className="text-xs font-semibold text-zinc-400 hover:text-white transition cursor-pointer"
-          >
-            Switch Profile →
-          </button>
-        </div>
-
-        {/* Hero Billboard */}
-        <section className="relative h-[65vh] min-h-[480px] w-full overflow-hidden">
-          <img
-            src="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?q=80&w=1200&auto=format&fit=crop"
-            alt="Reader View"
-            className="h-full w-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
-
-          <div className="absolute bottom-16 left-0 right-0 mx-auto max-w-7xl px-6 md:px-12">
-            <div className="mb-3 flex items-center gap-2">
-              <img src={Logo} alt="R" className="h-7 w-auto drop-shadow-[0_0_10px_rgba(229,9,20,0.9)]" />
-              <span className="text-xs font-bold uppercase tracking-[0.2em] text-red-500">
-                THE ENGINEERING PRESS
-              </span>
-            </div>
-
-            <h1 className="text-4xl md:text-6xl font-extrabold text-white max-w-3xl leading-tight">
-              Documentaries & Stories
-            </h1>
-
-            <div className="mt-4 flex items-center gap-3 text-sm font-semibold">
-              <span className="text-emerald-400 font-bold">98% Story Match</span>
-              <span className="text-zinc-300">{blogs.length} Articles Available</span>
-              <span className="text-zinc-400">• High-Readability Markdown</span>
-            </div>
-
-            <p className="mt-4 max-w-2xl text-zinc-300 text-base md:text-lg">
-              Explore in-depth articles on building streaming UIs, system architecture, AI coding agents, and software engineering career insights.
-            </p>
-
-            <div className="mt-8 flex flex-wrap gap-4">
-              <button
-                onClick={() => navigate("/introduction")}
-                className="flex items-center gap-2 rounded bg-red-600 px-7 py-3 font-bold text-white transition hover:bg-red-700 hover:scale-105 cursor-pointer shadow-lg"
-              >
-                <UserCheck className="h-5 w-5" />
-                <span>Behind The Scenes / About Me →</span>
-              </button>
-              <button
-                onClick={() => navigate("/documentary")}
-                className="flex items-center gap-2 rounded bg-zinc-800 px-6 py-3 font-semibold text-white border border-zinc-700 hover:bg-zinc-700 transition cursor-pointer"
-              >
-                <Play className="h-5 w-5 fill-white" />
-                <span>Start Reading Articles</span>
-              </button>
-            </div>
-          </div>
-        </section>
-
-        {/* Reader Section Rows */}
-        <div className="mx-auto max-w-7xl px-6 md:px-12 mt-8 space-y-10">
-          <div>
-            <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-              <span className="h-4 w-1 bg-red-600 rounded-full inline-block" />
-              Featured Documentary Series
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {blogs.map((b) => (
-                <div key={b.slug} className="aspect-video w-full">
-                  <BlogCard blog={b} onMoreInfo={(blog) => setPreviewBlog(blog)} />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {previewBlog && (
-          <BlogPreviewModal blog={previewBlog} allBlogs={blogs} onClose={() => setPreviewBlog(null)} />
-        )}
-      </div>
-    );
-  }
-
-  // -------------------------------------------------------------
-  // DEFAULT / EXPLORER VIEW
-  // -------------------------------------------------------------
-  return (
-    <div className="min-h-screen bg-black text-white pb-24">
-      {/* Explorer Active Profile Bar */}
-      <div className="bg-zinc-900 px-6 py-3 border-b border-zinc-800 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <Compass className="h-4 w-4 text-red-500 animate-spin" style={{ animationDuration: '10s' }} />
-          <span className="text-xs font-semibold text-zinc-300">
-            Profile: <strong className="text-white">Explorer Mode</strong>
-          </span>
-        </div>
-        <button
-          onClick={handleSwitchProfile}
-          className="text-xs font-semibold text-zinc-400 hover:text-white transition cursor-pointer"
-        >
-          Switch Profile →
-        </button>
-      </div>
-
-      {/* Hero Billboard */}
-      <section className="relative h-[75vh] min-h-[520px] w-full overflow-hidden">
-        <img
-          src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200&auto=format&fit=crop"
-          alt="Explorer View"
-          className="h-full w-full object-cover transform scale-105"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
-
-        <div className="absolute bottom-16 left-0 right-0 mx-auto max-w-7xl px-6 md:px-12">
-          <div className="mb-3 flex items-center gap-2">
-            <img src={Logo} alt="R" className="h-7 w-auto drop-shadow-[0_0_10px_rgba(229,9,20,0.9)]" />
-            <span className="text-xs font-bold uppercase tracking-[0.25em] text-red-500">
-              RAUNAK FLIX UNIVERSE
-            </span>
-          </div>
-
-          <h1 className="text-4xl md:text-7xl font-extrabold text-white max-w-4xl leading-tight">
-            Developer • Designer • Creator
-          </h1>
-
-          <div className="mt-4 flex items-center gap-3 text-sm font-semibold">
-            <span className="text-emerald-400 font-bold">100% Match for Explorers</span>
-            <span className="border border-zinc-700 px-2 py-0.5 text-xs text-zinc-300 rounded">
-              Interactive Universe
-            </span>
-          </div>
-
-          <p className="mt-4 max-w-2xl text-zinc-300 text-base md:text-lg">
-            Welcome to the Raunak Flix portfolio platform. Explore original projects, read engineering documentaries, check awards, and connect.
-          </p>
-
-          <div className="mt-8 flex flex-wrap gap-4">
-            <button
-              onClick={() => navigate("/introduction")}
-              className="flex items-center gap-2 rounded bg-red-600 px-7 py-3 font-bold text-white transition hover:bg-red-700 hover:scale-105 cursor-pointer shadow-lg"
-            >
-              <UserCheck className="h-5 w-5" />
-              <span>Behind The Scenes / About Me →</span>
-            </button>
-            <button
-              onClick={() => navigate("/originals")}
-              className="flex items-center gap-2 rounded bg-white px-6 py-3 font-bold text-black transition hover:bg-zinc-200 cursor-pointer"
-            >
-              <Play className="h-5 w-5 fill-black" />
-              <span>Explore Originals</span>
-            </button>
-            <button
-              onClick={() => navigate("/contact")}
-              className="flex items-center gap-2 rounded bg-zinc-800/80 px-6 py-3 font-semibold text-white border border-zinc-700 hover:bg-zinc-700 transition cursor-pointer"
-            >
-              <Users className="h-5 w-5 text-emerald-400" />
-              <span>Connect</span>
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* Explorer Section Rows */}
-      <div className="mx-auto max-w-7xl px-6 md:px-12 mt-8 space-y-10">
-        <div>
-          <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-            <span className="h-4 w-1 bg-red-600 rounded-full inline-block" />
-            Trending Highlights
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-            {renderSimpleCard("About Me / Behind Scenes", "Biography", "Full Story & Principles", "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=800&auto=format&fit=crop", () => navigate("/introduction"), "99% Match")}
-            {renderSimpleCard("Original Projects", "Originals", "Web Apps & Tools", "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop", () => navigate("/originals"), "100% Match")}
-            {renderSimpleCard("Documentary Blogs", "Documentary", "Tech Articles", "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=800&auto=format&fit=crop", () => navigate("/documentary"), "99% Match")}
-            {renderSimpleCard("Cast & Reach Me", "Contact", "Social Channels", "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop", () => navigate("/contact"), "97% Match")}
-          </div>
-        </div>
-
-        <div>
-          <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-            <span className="h-4 w-1 bg-red-600 rounded-full inline-block" />
-            Featured Documentaries (Blogs)
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {blogs.map((b) => (
-              <div key={b.slug} className="aspect-video w-full">
-                <BlogCard blog={b} onMoreInfo={(blog) => setPreviewBlog(blog)} />
+              <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                <span className="h-4 w-1 bg-red-600 rounded-full inline-block" />
+                Technical Writing & System Docs
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                {blogs.map((b) => (
+                  <div key={b.slug} className="aspect-video w-full">
+                    <BlogCard blog={b} onMoreInfo={(blog) => setPreviewBlog(blog)} />
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
-      </div>
+            </div>
 
-      {previewBlog && (
-        <BlogPreviewModal blog={previewBlog} allBlogs={blogs} onClose={() => setPreviewBlog(null)} />
-      )}
-    </div>
-  );
+            <div className="rounded-xl bg-gradient-to-r from-zinc-900 via-zinc-900 to-red-950/40 p-8 border border-zinc-800 flex flex-col md:flex-row items-center justify-between gap-6">
+              <div>
+                <span className="text-xs font-bold text-red-500 uppercase tracking-widest">
+                  RECRUITER QUICK ACTION
+                </span>
+                <h3 className="text-2xl font-bold text-white mt-1">Interested in working together?</h3>
+                <p className="text-zinc-400 text-sm mt-1">
+                  Reach out directly via email, GitHub, or LinkedIn to schedule an interview or request code samples.
+                </p>
+              </div>
+              <button
+                onClick={() => navigate("/contact")}
+                className="rounded-lg bg-red-600 px-8 py-3.5 font-bold text-white transition hover:bg-red-700 hover:scale-105 cursor-pointer whitespace-nowrap shadow-lg"
+              >
+                Contact Candidate Now →
+              </button>
+            </div>
+          </div>
+
+          {previewBlog && (
+            <BlogPreviewModal blog={previewBlog} allBlogs={blogs} onClose={() => setPreviewBlog(null)} />
+          )}
+        </div>
+        );
+  }
+
+        // -------------------------------------------------------------
+        // DEVELOPER VIEW
+        // -------------------------------------------------------------
+        if (profileId.includes("developer")) {
+    return (
+        <div className="min-h-screen bg-black text-white pb-24 font-mono">
+          {/* Developer Active Profile Bar */}
+          <div className="bg-zinc-900/90 px-6 py-3 border-b border-zinc-800 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <Terminal className="h-4 w-4 text-emerald-400" />
+              <span className="text-xs text-zinc-300">
+                Active Environment: <strong className="text-emerald-400">Developer Command Center</strong>
+              </span>
+              <span className="rounded bg-emerald-950 px-2 py-0.5 text-[10px] text-emerald-400 border border-emerald-800/50">
+                DEV MODE
+              </span>
+            </div>
+            <button
+              onClick={handleSwitchProfile}
+              className="text-xs text-zinc-400 hover:text-white transition cursor-pointer font-sans"
+            >
+              Switch Profile →
+            </button>
+          </div>
+
+          {/* Hero Billboard */}
+          <section className="relative h-[65vh] min-h-[480px] w-full overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop"
+              alt="Developer View"
+              className="h-full w-full object-cover opacity-80"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+
+            <div className="absolute bottom-16 left-0 right-0 mx-auto max-w-7xl px-6 md:px-12 font-sans">
+              <div className="mb-3 flex items-center gap-2">
+                <img src={Logo} alt="R" className="h-7 w-auto drop-shadow-[0_0_10px_rgba(229,9,20,0.9)]" />
+                <span className="text-xs font-bold uppercase tracking-[0.2em] text-red-500">
+                  ARCHITECTURE & DEV LAB
+                </span>
+              </div>
+
+              <h1 className="text-4xl md:text-6xl font-extrabold text-white max-w-3xl leading-tight">
+                Dev Terminal & Codebases
+              </h1>
+
+              <div className="mt-4 flex items-center gap-3 text-sm font-semibold">
+                <span className="text-emerald-400 font-bold font-mono">STATUS: 200 OK</span>
+                <span className="border border-zinc-700 px-2 py-0.5 text-xs text-zinc-300 rounded font-mono">
+                  Vite 8 + React 19 + Tailwind v4
+                </span>
+              </div>
+
+              <p className="mt-4 max-w-2xl text-zinc-300 text-base md:text-lg">
+                Explore state isolation, Redux Toolkit slices, dynamic import modules, custom hooks, and markdown parsing workflows used across this project.
+              </p>
+
+              <div className="mt-8 flex flex-wrap gap-4">
+                <button
+                  onClick={() => navigate("/introduction")}
+                  className="flex items-center gap-2 rounded bg-red-600 px-7 py-3 font-bold text-white transition hover:bg-red-700 hover:scale-105 cursor-pointer shadow-lg"
+                >
+                  <UserCheck className="h-5 w-5" />
+                  <span>Behind The Scenes / About Me →</span>
+                </button>
+                <button
+                  onClick={() => navigate("/documentary")}
+                  className="flex items-center gap-2 rounded bg-zinc-800 px-6 py-3 font-semibold text-white border border-zinc-700 hover:bg-zinc-700 transition cursor-pointer"
+                >
+                  <FileText className="h-5 w-5 text-red-500" />
+                  <span>Read Tech Articles</span>
+                </button>
+                <button
+                  onClick={() => navigate("/originals")}
+                  className="flex items-center gap-2 rounded bg-zinc-800 px-6 py-3 font-semibold text-white border border-zinc-700 hover:bg-zinc-700 transition cursor-pointer"
+                >
+                  <Code className="h-5 w-5 text-emerald-400" />
+                  <span>Browse Code Projects</span>
+                </button>
+              </div>
+            </div>
+          </section>
+
+          {/* Developer Section Rows */}
+          <div className="mx-auto max-w-7xl px-6 md:px-12 mt-8 space-y-10 font-sans">
+            <div>
+              <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2 font-mono">
+                <span className="h-4 w-1 bg-red-600 rounded-full inline-block" />
+                Dev Tech Stack & Dependencies
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                {renderSimpleCard("About Me / Behind Scenes", "Biography", "Full Story & Principles", "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=800&auto=format&fit=crop", () => navigate("/introduction"), "99% Match")}
+                {renderSimpleCard("React 19 & DOM", "Framework", "v19.2.8", "https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=800&auto=format&fit=crop", () => navigate("/originals"), "100% Match")}
+                {renderSimpleCard("Vite 8 & ESBuild", "Bundler", "Instant HMR", "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop", () => navigate("/documentary"), "99% Match")}
+                {renderSimpleCard("Redux Toolkit", "State Machine", "Slice & Dispatch", "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop", () => navigate("/originals"), "98% Match")}
+              </div>
+            </div>
+
+            <div>
+              <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                <span className="h-4 w-1 bg-red-600 rounded-full inline-block" />
+                Architecture & Tech Documentaries
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                {blogs.map((b) => (
+                  <div key={b.slug} className="aspect-video w-full">
+                    <BlogCard blog={b} onMoreInfo={(blog) => setPreviewBlog(blog)} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {previewBlog && (
+            <BlogPreviewModal blog={previewBlog} allBlogs={blogs} onClose={() => setPreviewBlog(null)} />
+          )}
+        </div>
+        );
+  }
+
+        // -------------------------------------------------------------
+        // READER VIEW
+        // -------------------------------------------------------------
+        if (profileId.includes("reader")) {
+    return (
+        <div className="min-h-screen bg-black text-white pb-24">
+          {/* Reader Active Profile Bar */}
+          <div className="bg-zinc-900 px-6 py-3 border-b border-zinc-800 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <BookOpen className="h-4 w-4 text-red-500" />
+              <span className="text-xs font-semibold text-zinc-300">
+                Profile: <strong className="text-white">Reader & Article Enthusiast</strong>
+              </span>
+            </div>
+            <button
+              onClick={handleSwitchProfile}
+              className="text-xs font-semibold text-zinc-400 hover:text-white transition cursor-pointer"
+            >
+              Switch Profile →
+            </button>
+          </div>
+
+          {/* Hero Billboard */}
+          <section className="relative h-[65vh] min-h-[480px] w-full overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?q=80&w=1200&auto=format&fit=crop"
+              alt="Reader View"
+              className="h-full w-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+
+            <div className="absolute bottom-16 left-0 right-0 mx-auto max-w-7xl px-6 md:px-12">
+              <div className="mb-3 flex items-center gap-2">
+                <img src={Logo} alt="R" className="h-7 w-auto drop-shadow-[0_0_10px_rgba(229,9,20,0.9)]" />
+                <span className="text-xs font-bold uppercase tracking-[0.2em] text-red-500">
+                  THE ENGINEERING PRESS
+                </span>
+              </div>
+
+              <h1 className="text-4xl md:text-6xl font-extrabold text-white max-w-3xl leading-tight">
+                Documentaries & Stories
+              </h1>
+
+              <div className="mt-4 flex items-center gap-3 text-sm font-semibold">
+                <span className="text-emerald-400 font-bold">98% Story Match</span>
+                <span className="text-zinc-300">{blogs.length} Articles Available</span>
+                <span className="text-zinc-400">• High-Readability Markdown</span>
+              </div>
+
+              <p className="mt-4 max-w-2xl text-zinc-300 text-base md:text-lg">
+                Explore in-depth articles on building streaming UIs, system architecture, AI coding agents, and software engineering career insights.
+              </p>
+
+              <div className="mt-8 flex flex-wrap gap-4">
+                <button
+                  onClick={() => navigate("/introduction")}
+                  className="flex items-center gap-2 rounded bg-red-600 px-7 py-3 font-bold text-white transition hover:bg-red-700 hover:scale-105 cursor-pointer shadow-lg"
+                >
+                  <UserCheck className="h-5 w-5" />
+                  <span>Behind The Scenes / About Me →</span>
+                </button>
+                <button
+                  onClick={() => navigate("/documentary")}
+                  className="flex items-center gap-2 rounded bg-zinc-800 px-6 py-3 font-semibold text-white border border-zinc-700 hover:bg-zinc-700 transition cursor-pointer"
+                >
+                  <Play className="h-5 w-5 fill-white" />
+                  <span>Start Reading Articles</span>
+                </button>
+              </div>
+            </div>
+          </section>
+
+          {/* Reader Section Rows */}
+          <div className="mx-auto max-w-7xl px-6 md:px-12 mt-8 space-y-10">
+            <div>
+              <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                <span className="h-4 w-1 bg-red-600 rounded-full inline-block" />
+                Featured Documentary Series
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                {blogs.map((b) => (
+                  <div key={b.slug} className="aspect-video w-full">
+                    <BlogCard blog={b} onMoreInfo={(blog) => setPreviewBlog(blog)} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {previewBlog && (
+            <BlogPreviewModal blog={previewBlog} allBlogs={blogs} onClose={() => setPreviewBlog(null)} />
+          )}
+        </div>
+        );
+  }
+
+        // -------------------------------------------------------------
+        // DEFAULT / EXPLORER VIEW
+        // -------------------------------------------------------------
+        return (
+        <div className="min-h-screen bg-black text-white pb-24">
+          {/* Explorer Active Profile Bar */}
+          <div className="bg-zinc-900 px-6 py-3 border-b border-zinc-800 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <Compass className="h-4 w-4 text-red-500 animate-spin" style={{ animationDuration: '10s' }} />
+              <span className="text-xs font-semibold text-zinc-300">
+                Profile: <strong className="text-white">Explorer Mode</strong>
+              </span>
+            </div>
+            <button
+              onClick={handleSwitchProfile}
+              className="text-xs font-semibold text-zinc-400 hover:text-white transition cursor-pointer"
+            >
+              Switch Profile →
+            </button>
+          </div>
+
+          {/* Hero Billboard */}
+          <section className="relative h-[75vh] min-h-[520px] w-full overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1200&auto=format&fit=crop"
+              alt="Explorer View"
+              className="h-full w-full object-cover transform scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+
+            <div className="absolute bottom-16 left-0 right-0 mx-auto max-w-7xl px-6 md:px-12">
+              <div className="mb-3 flex items-center gap-2">
+                <img src={Logo} alt="R" className="h-7 w-auto drop-shadow-[0_0_10px_rgba(229,9,20,0.9)]" />
+                <span className="text-xs font-bold uppercase tracking-[0.25em] text-red-500">
+                  RAUNAK FLIX UNIVERSE
+                </span>
+              </div>
+
+              <h1 className="text-4xl md:text-7xl font-extrabold text-white max-w-4xl leading-tight">
+                Developer • Designer • Creator
+              </h1>
+
+              <div className="mt-4 flex items-center gap-3 text-sm font-semibold">
+                <span className="text-emerald-400 font-bold">100% Match for Explorers</span>
+                <span className="border border-zinc-700 px-2 py-0.5 text-xs text-zinc-300 rounded">
+                  Interactive Universe
+                </span>
+              </div>
+
+              <p className="mt-4 max-w-2xl text-zinc-300 text-base md:text-lg">
+                Welcome to the Raunak Flix portfolio platform. Explore original projects, read engineering documentaries, check awards, and connect.
+              </p>
+
+              <div className="mt-8 flex flex-wrap gap-4">
+                <button
+                  onClick={() => navigate("/introduction")}
+                  className="flex items-center gap-2 rounded bg-red-600 px-7 py-3 font-bold text-white transition hover:bg-red-700 hover:scale-105 cursor-pointer shadow-lg"
+                >
+                  <UserCheck className="h-5 w-5" />
+                  <span>Behind The Scenes / About Me →</span>
+                </button>
+                <button
+                  onClick={() => navigate("/originals")}
+                  className="flex items-center gap-2 rounded bg-white px-6 py-3 font-bold text-black transition hover:bg-zinc-200 cursor-pointer"
+                >
+                  <Play className="h-5 w-5 fill-black" />
+                  <span>Explore Originals</span>
+                </button>
+                <button
+                  onClick={() => navigate("/contact")}
+                  className="flex items-center gap-2 rounded bg-zinc-800/80 px-6 py-3 font-semibold text-white border border-zinc-700 hover:bg-zinc-700 transition cursor-pointer"
+                >
+                  <Users className="h-5 w-5 text-emerald-400" />
+                  <span>Connect</span>
+                </button>
+              </div>
+            </div>
+          </section>
+
+          {/* Explorer Section Rows */}
+          <div className="mx-auto max-w-7xl px-6 md:px-12 mt-8 space-y-10">
+            <div>
+              <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                <span className="h-4 w-1 bg-red-600 rounded-full inline-block" />
+                Trending Highlights
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                {renderSimpleCard("About Me / Behind Scenes", "Biography", "Full Story & Principles", "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=800&auto=format&fit=crop", () => navigate("/introduction"), "99% Match")}
+                {renderSimpleCard("Original Projects", "Originals", "Web Apps & Tools", "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop", () => navigate("/originals"), "100% Match")}
+                {renderSimpleCard("Documentary Blogs", "Documentary", "Tech Articles", "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=800&auto=format&fit=crop", () => navigate("/documentary"), "99% Match")}
+                {renderSimpleCard("Cast & Reach Me", "Contact", "Social Channels", "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop", () => navigate("/contact"), "97% Match")}
+              </div>
+            </div>
+
+            <div>
+              <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                <span className="h-4 w-1 bg-red-600 rounded-full inline-block" />
+                Featured Documentaries (Blogs)
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                {blogs.map((b) => (
+                  <div key={b.slug} className="aspect-video w-full">
+                    <BlogCard blog={b} onMoreInfo={(blog) => setPreviewBlog(blog)} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {previewBlog && (
+            <BlogPreviewModal blog={previewBlog} allBlogs={blogs} onClose={() => setPreviewBlog(null)} />
+          )}
+        </div>
+        );
 }
