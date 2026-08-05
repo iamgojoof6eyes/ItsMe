@@ -1,6 +1,5 @@
 import { AboutMe, Achivements, Blog, BlogPost, Home, Landing, NotFound, Projects, ReachMe, WhoWatching } from '@/Pages'
 import store from '@/store/store.js'
-import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
@@ -57,9 +56,7 @@ const routes = createBrowserRouter(
 )
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <Provider store={store}>
-      <RouterProvider router={routes} />
-    </Provider>
-  </StrictMode>,
+  <Provider store={store}>
+    <RouterProvider router={routes} />
+  </Provider>
 )
