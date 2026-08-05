@@ -1,2 +1,29 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
+
+/* Netflix-style Custom Scrollbar Utility */
+.netflix-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.netflix-scrollbar::-webkit-scrollbar-track {
+  background: rgba(24, 24, 27, 0.6);
+  border-radius: 9999px;
+}
+
+.netflix-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(229, 9, 20, 0.6);
+  border-radius: 9999px;
+}
+
+.netflix-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(229, 9, 20, 1);
+  box-shadow: 0 0 12px rgba(229, 9, 20, 0.9);
+}
+
+/* Firefox Custom Scrollbar Support */
+.netflix-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(229, 9, 20, 0.6) rgba(24, 24, 27, 0.6);
+}

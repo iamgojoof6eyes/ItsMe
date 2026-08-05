@@ -30,94 +30,19 @@ const achievementCategories = [
 
 const achievementsList = [
   {
-    id: "hackathon-winner",
-    title: "1st Place Champion - National Web Hackathon",
+    id: "participated-college-fests",
+    title: "Participated in college fests",
     category: "Hackathons & Contests",
-    issuer: "Tech Innovators Guild",
+    issuer: "College Judge",
     year: "2025",
     matchScore: "100% Match",
     type: "Gold Trophy",
     iconColor: "text-amber-400",
     badgeBg: "bg-amber-500/20 text-amber-300 border-amber-500/50",
-    coverImage: "https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?q=80&w=800&auto=format&fit=crop",
-    synopsis: "Secured first rank out of 150+ competing developer teams by engineering a real-time collaborative streaming platform in under 36 hours.",
-    skills: ["React 19", "WebSockets", "Node.js", "TailwindCSS"],
-    credentialUrl: "https://github.com/iamgojoof6eyes",
-  },
-  {
-    id: "fullstack-cert",
-    title: "Advanced Full-Stack Engineering Certification",
-    category: "Certifications",
-    issuer: "Meta & Coursera Academy",
-    year: "2024",
-    matchScore: "99% Match",
-    type: "Professional Cert",
-    iconColor: "text-blue-400",
-    badgeBg: "bg-blue-500/20 text-blue-300 border-blue-500/50",
-    coverImage: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800&auto=format&fit=crop",
-    synopsis: "Demonstrated expert proficiency in front-end state management, microservices API design, database normalization, and modern UI design systems.",
-    skills: ["React", "Redux Toolkit", "Node API", "PostgreSQL"],
-    credentialUrl: "https://coursera.org",
-  },
-  {
-    id: "uiux-excellence",
-    title: "Best UI/UX Craftsman & Design Award",
-    category: "Recognition & Awards",
-    issuer: "Frontend Design Summit",
-    year: "2024",
-    matchScore: "98% Match",
-    type: "Excellence Award",
-    iconColor: "text-red-500",
-    badgeBg: "bg-red-600/20 text-red-400 border-red-800/50",
-    coverImage: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=800&auto=format&fit=crop",
-    synopsis: "Awarded for exceptional visual aesthetics, glassmorphism UI tokens, micro-animations, and fluid 60fps responsive user experiences.",
-    skills: ["TailwindCSS v4", "CSS Grid & Flex", "UX Research", "Figma"],
-    credentialUrl: "https://github.com/iamgojoof6eyes",
-  },
-  {
-    id: "open-source-star",
-    title: "Top 1% Open Source Contributor Milestone",
-    category: "Engineering Milestones",
-    issuer: "GitHub Global Community",
-    year: "2024",
-    matchScore: "99% Match",
-    type: "Community Leader",
-    iconColor: "text-emerald-400",
-    badgeBg: "bg-emerald-500/20 text-emerald-300 border-emerald-500/50",
-    coverImage: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop",
-    synopsis: "Contributed core bug fixes, performance optimizations, and documentation updates across major open-source JavaScript and React repositories.",
-    skills: ["Git", "GitHub Actions", "Oxlint", "TypeScript"],
-    credentialUrl: "https://github.com/iamgojoof6eyes",
-  },
-  {
-    id: "ai-developer-honors",
-    title: "Autonomous AI & Agent Workflows Specialist",
-    category: "Certifications",
-    issuer: "DeepMind & AI Developers Network",
-    year: "2025",
-    matchScore: "100% Match",
-    type: "Specialist Badge",
-    iconColor: "text-purple-400",
-    badgeBg: "bg-purple-500/20 text-purple-300 border-purple-500/50",
-    coverImage: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop",
-    synopsis: "Mastered building autonomous AI agent pipelines, multi-agent orchestrations, context engineering, and LLM tool bindings.",
-    skills: ["AI Subagents", "Prompt Architecture", "Vite", "JSON Schemas"],
-    credentialUrl: "https://github.com/iamgojoof6eyes",
-  },
-  {
-    id: "speed-code-trophy",
-    title: "Fastest Code Execution & Optimization Award",
-    category: "Hackathons & Contests",
-    issuer: "Algorithm Speed Sprint",
-    year: "2023",
-    matchScore: "97% Match",
-    type: "Silver Medal",
-    iconColor: "text-cyan-400",
-    badgeBg: "bg-cyan-500/20 text-cyan-300 border-cyan-500/50",
-    coverImage: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop",
-    synopsis: "Achieved the fastest sub-millisecond execution runtime and lowest memory footprint in high-concurrency algorithmic challenges.",
-    skills: ["Data Structures", "Algorithms", "Performance Optimization"],
-    credentialUrl: "https://github.com/iamgojoof6eyes",
+    coverImage: "https://images.unsplash.com/vector-1750615396616-284f8eaf7643?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    synopsis: "Made a maze solver which creates a maze and solve it by itself by using BFS and A* Algorithms in C++",
+    skills: ["BFS", "A* Algorithms", "C++"],
+    credentialUrl: "https://github.com/iamgojoof6eyes/Learnings/tree/main/Sem1/MazeSolver",
   },
 ];
 
@@ -214,8 +139,8 @@ export default function Achivements() {
               key={cat}
               onClick={() => setSelectedCategory(cat)}
               className={`rounded-full px-4 py-1.5 text-xs font-bold transition-all duration-300 cursor-pointer ${selectedCategory === cat
-                  ? "bg-red-600 text-white shadow-[0_0_15px_rgba(229,9,20,0.6)] scale-105"
-                  : "bg-zinc-900 text-zinc-400 border border-zinc-800 hover:text-white hover:border-zinc-700"
+                ? "bg-red-600 text-white shadow-[0_0_15px_rgba(229,9,20,0.6)] scale-105"
+                : "bg-zinc-900 text-zinc-400 border border-zinc-800 hover:text-white hover:border-zinc-700"
                 }`}
             >
               {cat}

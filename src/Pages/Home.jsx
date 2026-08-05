@@ -103,24 +103,24 @@ export default function Home() {
             <div className="mb-3 flex items-center gap-2">
               <img src={Logo} alt="R" className="h-7 w-auto drop-shadow-[0_0_10px_rgba(229,9,20,0.9)]" />
               <span className="text-xs font-bold uppercase tracking-[0.2e] text-red-500">
-                FULL-STACK & FRONTEND ENGINEER
+                PYTHON & FULL-STACK DEVELOPER • DATA SCRAPING & AI BASICS
               </span>
             </div>
 
             <h1 className="text-4xl md:text-6xl font-extrabold text-white max-w-3xl leading-tight">
-              Raunak • Senior Developer
+              Raunak • Python & Web Engineer
             </h1>
 
-            <div className="mt-4 flex items-center gap-3 text-sm font-semibold">
+            <div className="mt-4 flex flex-wrap items-center gap-3 text-sm font-semibold">
               <span className="text-emerald-400 font-bold">99% Match for Tech Roles</span>
               <span className="border border-zinc-700 px-2 py-0.5 text-xs text-zinc-300 rounded">
-                Available Immediately
+                Python • FastAPI • Web Scraping • React.js
               </span>
-              <span className="text-zinc-400">• Full-Time / Remote</span>
+              <span className="text-zinc-400">• Basics of AI • Physics & Maths • Sketching</span>
             </div>
 
             <p className="mt-4 max-w-2xl text-zinc-300 text-base md:text-lg">
-              Specialized in crafting modern web applications using React, Node.js, Redux Toolkit, and System Architecture. Proven ability to build production-grade interfaces with streaming-level UI performance.
+              Specialized in Python development, Web Scraping & Data Crawling (Pandas, Matplotlib), FastAPI/Express backends, and React.js interfaces. Passionate about AI fundamentals, Physics, Mathematics, and creative sketching.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">

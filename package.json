@@ -2,6 +2,8 @@
   "name": "itsme",
   "private": true,
   "version": "0.0.0",
+  "license": "MIT",
+  "author": "Captain D. Ezio",
   "type": "module",
   "scripts": {
     "dev": "vite",

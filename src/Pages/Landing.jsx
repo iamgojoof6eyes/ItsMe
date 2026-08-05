@@ -62,48 +62,44 @@ export default function Landing() {
     <div className="relative min-h-screen w-full bg-black text-white overflow-hidden flex flex-col items-center justify-center select-none">
       {/* Dynamic Background Flare / Glow */}
       <div
-        className={`pointer-events-none absolute inset-0 transition-opacity duration-1000 ${
-          animState === "center"
+        className={`pointer-events-none absolute inset-0 transition-opacity duration-1000 ${animState === "center"
             ? "bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-red-950/70 via-black to-black opacity-100"
             : animState === "disappear"
-            ? "bg-black opacity-100"
-            : "bg-black opacity-90"
-        }`}
+              ? "bg-black opacity-100"
+              : "bg-black opacity-90"
+          }`}
       />
 
       {/* The Animated R.svg Logo */}
       <div
         onClick={() => {
-          if (animState === "idle") startAnimation();
+          startAnimation();
         }}
-        className={`fixed z-50 transition-all duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)] cursor-pointer ${
-          animState === "idle"
+        className={`fixed z-50 transition-all duration-1000 ease-[cubic-bezier(0.25,1,0.5,1)] cursor-pointer ${animState === "idle"
             ? "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-125 opacity-90"
             : animState === "center"
-            ? "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150 shadow-[0_0_80px_rgba(229,9,20,0.9)] opacity-100"
-            : animState === "disappear"
-            ? "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-200 opacity-0"
-            : "top-6 left-6 md:top-8 md:left-12 translate-x-0 translate-y-0 scale-90 opacity-100"
-        }`}
+              ? "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-150 shadow-[0_0_80px_rgba(229,9,20,0.9)] opacity-100"
+              : animState === "disappear"
+                ? "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-200 opacity-0"
+                : "top-6 left-6 md:top-8 md:left-12 translate-x-0 translate-y-0 scale-90 opacity-100"
+          }`}
       >
         <img
           src={Logo}
           alt="Raunak Flix"
-          className={`h-12 w-auto md:h-16 transition-all duration-700 ${
-            animState === "center"
+          className={`h-12 w-auto md:h-16 transition-all duration-700 ${animState === "center"
               ? "drop-shadow-[0_0_35px_rgba(229,9,20,1)]"
               : "drop-shadow-[0_0_12px_rgba(229,9,20,0.8)]"
-          }`}
+            }`}
         />
       </div>
 
       {/* Center Title Banner during Intro Phase */}
       <div
-        className={`fixed top-2/3 left-1/2 -translate-x-1/2 text-center transition-all duration-700 ${
-          animState === "center"
+        className={`fixed top-2/3 left-1/2 -translate-x-1/2 text-center transition-all duration-700 ${animState === "center"
             ? "opacity-100 scale-100"
             : "opacity-0 scale-90 pointer-events-none"
-        }`}
+          }`}
       >
         <h1 className="text-3xl md:text-5xl font-black tracking-widest text-red-600 drop-shadow-[0_0_20px_rgba(229,9,20,0.8)]">
           RAUNAK FLIX
@@ -136,11 +132,10 @@ export default function Landing() {
 
       {/* Who's Watching Profile Selection (Fades in when R moves to corner) */}
       <div
-        className={`relative z-10 flex flex-col items-center justify-center transition-all duration-1000 ${
-          animState === "corner"
+        className={`relative z-10 flex flex-col items-center justify-center transition-all duration-1000 ${animState === "corner"
             ? "opacity-100 scale-100 translate-y-0"
             : "opacity-0 scale-95 translate-y-8 pointer-events-none"
-        }`}
+          }`}
       >
         {/* Title */}
         <h1 className="mb-12 text-center text-4xl font-extrabold text-white md:text-6xl tracking-tight drop-shadow-md">

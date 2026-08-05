@@ -9,7 +9,7 @@ import {
   getBlogsByCategory,
   getFeaturedBlog,
 } from "@/utils/blogLoader";
-import { Film, Search, Sparkles } from "lucide-react";
+import { Film, Search, Sparkles, X } from "lucide-react";
 
 export default function Blog() {
   const allBlogs = getAllBlogs();
@@ -33,20 +33,17 @@ export default function Blog() {
     );
   }
 
-  // Categorized rows for Netflix UI layout
-  const systemBlogs = allBlogs.filter(
-    (b) => b.category === "System Design" || b.category === "Frontend Architecture"
-  );
-  const aiBlogs = allBlogs.filter((b) => b.category === "AI & Future Tech");
+  // Extract all categories excluding "All" for dynamic row generation
+  const categoryList = categories.filter((c) => c !== "All");
 
   return (
     <div className="min-h-screen bg-black text-white pb-24">
       {/* Category Navigation & Search Header Bar */}
-      <div className="sticky top-20 z-40 bg-black/80 px-6 py-4 backdrop-blur-xl border-b border-zinc-800/80 md:px-12">
+      <div className="sticky top-20 z-40 bg-black/90 px-6 py-4 backdrop-blur-xl border-b border-zinc-800/80 md:px-12">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          {/* Category Pills */}
-          <div className="flex items-center gap-2 overflow-x-auto scrollbar-none py-1">
-            <span className="flex items-center gap-1.5 font-bold text-red-600 mr-2 text-sm">
+          {/* Category Pills (Scrollable with flex-1 & min-w-0 to prevent overlap) */}
+          <div className="flex-1 min-w-0 flex items-center gap-2 overflow-x-auto netflix-scrollbar py-1.5 pr-2">
+            <span className="flex items-center gap-1.5 font-bold text-red-600 mr-2 text-sm flex-shrink-0">
               <Film className="h-4 w-4" />
               Documentaries
             </span>
@@ -54,7 +51,7 @@ export default function Blog() {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`rounded-full px-4 py-1.5 text-xs font-semibold transition-all duration-200 cursor-pointer whitespace-nowrap ${selectedCategory === cat
+                className={`flex-shrink-0 rounded-full px-4 py-1.5 text-xs font-semibold transition-all duration-200 cursor-pointer whitespace-nowrap ${selectedCategory === cat
                     ? "bg-red-600 text-white shadow-[0_0_12px_rgba(229,9,20,0.6)]"
                     : "bg-zinc-900 text-zinc-400 hover:bg-zinc-800 hover:text-white border border-zinc-800"
                   }`}
@@ -64,16 +61,24 @@ export default function Blog() {
             ))}
           </div>
 
-          {/* Search Box */}
-          <div className="relative w-full md:w-72">
+          {/* Search Box (Fixed width and flex-shrink-0 so categories don't overflow behind it) */}
+          <div className="relative w-full md:w-72 flex-shrink-0">
             <Search className="absolute left-3 top-2.5 h-4 w-4 text-zinc-400" />
             <input
               type="text"
               placeholder="Search documentary titles, tags..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full rounded-md bg-zinc-900/90 pl-9 pr-4 py-2 text-xs text-white placeholder-zinc-500 border border-zinc-800 focus:border-red-600 focus:outline-none transition"
+              className="w-full rounded-md bg-zinc-900/90 pl-9 pr-8 py-2 text-xs text-white placeholder-zinc-500 border border-zinc-800 focus:border-red-600 focus:outline-none transition"
             />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery("")}
+                className="absolute right-3 top-2.5 text-zinc-400 hover:text-white cursor-pointer"
+              >
+                <X className="h-3.5 w-3.5" />
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -83,24 +88,30 @@ export default function Blog() {
         <BlogHero blog={featuredBlog} onMoreInfo={(b) => setPreviewBlog(b)} />
       )}
 
-      {/* Rows of Blogs (Netflix Category Sections) */}
+      {/* Dynamic Rows of Blogs (Netflix Category Sections) */}
       {selectedCategory === "All" && !searchQuery ? (
-        <div className="relative z-20 mt-4 space-y-4">
+        <div className="relative z-20 mt-4 space-y-6">
+          {/* Trending Row */}
           <BlogRow
             title="Trending Documentaries"
             blogs={allBlogs}
             onMoreInfo={(b) => setPreviewBlog(b)}
           />
-          <BlogRow
-            title="Architecture & System Design"
-            blogs={systemBlogs.length > 0 ? systemBlogs : allBlogs}
-            onMoreInfo={(b) => setPreviewBlog(b)}
-          />
-          <BlogRow
-            title="AI Agents & Future Tech"
-            blogs={aiBlogs.length > 0 ? aiBlogs : allBlogs}
-            onMoreInfo={(b) => setPreviewBlog(b)}
-          />
+
+          {/* Dynamic Category Rows */}
+          {categoryList.map((cat) => {
+            const categoryBlogs = allBlogs.filter((b) => b.category === cat);
+            if (categoryBlogs.length === 0) return null;
+
+            return (
+              <BlogRow
+                key={cat}
+                title={cat}
+                blogs={categoryBlogs}
+                onMoreInfo={(b) => setPreviewBlog(b)}
+              />
+            );
+          })}
         </div>
       ) : (
         /* Filtered Grid View */

@@ -7,6 +7,7 @@ import Projects from './Projects'
 import ReachMe from './ReachMe'
 import Landing from './Landing'
 import WhoWatching from './WhoWatching'
+import NotFound from './NotFound'
 
 export {
     AboutMe,
@@ -17,6 +18,7 @@ export {
     Projects,
     ReachMe,
     Landing,
-    WhoWatching
+    WhoWatching,
+    NotFound
 }
 

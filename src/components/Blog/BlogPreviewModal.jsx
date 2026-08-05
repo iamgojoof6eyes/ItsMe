@@ -13,7 +13,7 @@ export default function BlogPreviewModal({ blog, onClose, allBlogs = [] }) {
   const relatedBlogs = allBlogs.filter((b) => b.slug !== blog.slug).slice(0, 3);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/80 p-4 backdrop-blur-md animate-fadeIn">
+    <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto netflix-scrollbar bg-black/80 p-4 backdrop-blur-md animate-fadeIn">
       {/* Modal Overlay backdrop */}
       <div
         className="fixed inset-0"

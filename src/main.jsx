@@ -1,4 +1,4 @@
-import { AboutMe, Achivements, Blog, BlogPost, Home, Landing, Projects, ReachMe, WhoWatching } from '@/Pages'
+import { AboutMe, Achivements, Blog, BlogPost, Home, Landing, NotFound, Projects, ReachMe, WhoWatching } from '@/Pages'
 import store from '@/store/store.js'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
@@ -46,6 +46,10 @@ const routes = createBrowserRouter(
         {
           path: "contact",
           element: <CheckWatching><ReachMe /></CheckWatching>
+        },
+        {
+          path: "*",
+          element: <NotFound />
         }
       ]
     }

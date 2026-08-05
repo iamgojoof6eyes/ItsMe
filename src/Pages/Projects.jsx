@@ -25,122 +25,26 @@ const projectCategories = [
   "Frontend Systems",
   "Developer Tools & APIs",
   "AI & Intelligent Apps",
+  "Others"
 ];
 
 const projectsList = [
   {
-    id: "raunak-flix-portfolio",
-    title: "Raunak Flix - Streaming Portfolio & Blog Engine",
-    category: "Full-Stack Web Apps",
-    season: "S1",
-    episode: "E1",
-    matchScore: "100% Match",
-    badge: "NETFLIX ORIGINAL",
-    coverImage: "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=800&auto=format&fit=crop",
-    synopsis: "A high-performance Netflix-styled portfolio application featuring dynamic glob markdown blog parsing, multi-profile state management, custom Web Audio synthesis, and glassmorphic UI tokens.",
-    techStack: ["React 19", "Redux Toolkit", "TailwindCSS v4", "Vite 8", "Web Audio API", "Remark / GFM"],
-    liveDemoUrl: "https://github.com/iamgojoof6eyes/ItsMe",
-    githubUrl: "https://github.com/iamgojoof6eyes/ItsMe",
-    architectureHighlights: [
-      "Dynamic Vite Glob import loader parsing raw markdown files on mount.",
-      "Redux Toolkit viewer slice with synchronized localStorage state.",
-      "Synthesized dual-oscillator Web Audio API Netflix 'Ta-dum' sound effect.",
-      "Strict route protection with CheckWatching component wrapper.",
-    ],
-  },
-  {
-    id: "ai-copilot-studio",
-    title: "AI Agent Copilot Studio & Multi-Agent Orchestrator",
-    category: "AI & Intelligent Apps",
-    season: "S1",
-    episode: "E2",
-    matchScore: "99% Match",
-    badge: "FEATURED ORIGINAL",
-    coverImage: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop",
-    synopsis: "An autonomous developer studio that delegates sub-tasks to specialized AI agents, parses tool execution logs in real-time, and renders markdown execution plans.",
-    techStack: ["React", "Node.js", "Appwrite DB", "TailwindCSS", "JSON Schema", "REST APIs"],
-    liveDemoUrl: "https://github.com/iamgojoof6eyes",
-    githubUrl: "https://github.com/iamgojoof6eyes",
-    architectureHighlights: [
-      "Subagent state isolation with reactive background task notifications.",
-      "Real-time JSON Lines log parser and stream viewer.",
-      "Custom tool schema validation and parameter matching engine.",
-    ],
-  },
-  {
-    id: "cloud-dev-dashboard",
-    title: "Cloud Dev Command Center & API Monitor",
-    category: "Developer Tools & APIs",
-    season: "S1",
-    episode: "E3",
-    matchScore: "98% Match",
-    badge: "POPULAR ORIGINAL",
-    coverImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
-    synopsis: "A real-time developer dashboard tracking cloud server metrics, API response latency, database queries, and deployment pipeline health.",
-    techStack: ["React 19", "Recharts", "Node.js", "Express", "Appwrite", "TailwindCSS"],
-    liveDemoUrl: "https://github.com/iamgojoof6eyes",
-    githubUrl: "https://github.com/iamgojoof6eyes",
-    architectureHighlights: [
-      "WebSocket streaming connection for sub-10ms metric updates.",
-      "Custom analytics charting components with theme token hooks.",
-      "Role-based access control (RBAC) with Appwrite authentication.",
-    ],
-  },
-  {
-    id: "e-commerce-cinema",
-    title: "Cinematic E-Commerce Platform & Checkout Engine",
-    category: "Full-Stack Web Apps",
-    season: "S2",
-    episode: "E1",
-    matchScore: "97% Match",
-    badge: "NETFLIX ORIGINAL",
-    coverImage: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?q=80&w=800&auto=format&fit=crop",
-    synopsis: "A high-conversion online store with immersive video product preview cards, instant client-side cart updates, and secure payment processing flow.",
-    techStack: ["React", "Redux Toolkit", "Node.js", "Stripe API", "TailwindCSS"],
-    liveDemoUrl: "https://github.com/iamgojoof6eyes",
-    githubUrl: "https://github.com/iamgojoof6eyes",
-    architectureHighlights: [
-      "Client-side optimistic cart updates with persistent storage.",
-      "Lazy-loaded video backdrops for instant page load speed.",
-      "Stripe payment gateway integration with webhooks.",
-    ],
-  },
-  {
-    id: "design-system-tokens",
-    title: "Glassmorphism UI Component Library & Token Suite",
-    category: "Frontend Systems",
-    season: "S2",
-    episode: "E2",
-    matchScore: "99% Match",
-    badge: "DESIGN SYSTEM",
-    coverImage: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=800&auto=format&fit=crop",
-    synopsis: "A production UI library containing 40+ accessible, glassmorphic React components powered by TailwindCSS v4 design tokens and ARIA compliance.",
-    techStack: ["React 19", "TailwindCSS v4", "Vite", "Lucide Icons", "Accessibility (a11y)"],
-    liveDemoUrl: "https://github.com/iamgojoof6eyes",
-    githubUrl: "https://github.com/iamgojoof6eyes",
-    architectureHighlights: [
-      "Utility-first Tailwind v4 setup with custom color variables.",
-      "Full keyboard navigation and ARIA compliance across modals and carousels.",
-      "Tree-shakable ES module distribution.",
-    ],
-  },
-  {
-    id: "task-workflow-kanban",
-    title: "Agile Task Workflow & Kanban Engine",
-    category: "Frontend Systems",
-    season: "S2",
-    episode: "E3",
+    id: "dsa-java",
+    title: "DSA Using Java",
+    category: "Others",
+    format: "Movie",
     matchScore: "96% Match",
-    badge: "UTILITY APP",
-    coverImage: "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?q=80&w=800&auto=format&fit=crop",
-    synopsis: "An intuitive drag-and-drop task management board featuring real-time column sorting, task filtering, sub-task checklists, and activity feeds.",
-    techStack: ["React", "HTML5 Drag & Drop", "Redux Toolkit", "TailwindCSS"],
-    liveDemoUrl: "https://github.com/iamgojoof6eyes",
-    githubUrl: "https://github.com/iamgojoof6eyes",
+    badge: "DSA",
+    coverImage: "https://plus.unsplash.com/premium_photo-1685086785636-2a1a0e5b591f?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    synopsis: "A curated list of Data Structures and Algorithms implementations in Java, covering fundamental concepts, efficient algorithms, and problem-solving techniques.",
+    techStack: ["Java", "Data Structure", "Algorithims"],
+    liveDemoUrl: null,
+    githubUrl: "https://github.com/iamgojoof6eyes/DSA",
     architectureHighlights: [
-      "Native HTML5 Drag and Drop API integration with smooth drop indicators.",
-      "Undo/redo state stack for instant card recovery.",
-      "Filter cards by tags, assignees, and priority levels.",
+      "Building optimized codes",
+      "New Algorithims with problems",
+      "New data structure with implementations and where to apply",
     ],
   },
 ];
@@ -206,7 +110,7 @@ export default function Projects() {
           <div className="mt-4 flex flex-wrap items-center gap-3 text-sm font-semibold">
             <span className="text-emerald-400 font-bold">{featuredProject.matchScore}</span>
             <span className="border border-zinc-700 px-2 py-0.5 text-xs text-zinc-300 rounded">
-              {featuredProject.season} {featuredProject.episode}
+              {featuredProject.format || "Movie"}
             </span>
             <span className="text-zinc-400">• Production-Grade Engineering</span>
           </div>
@@ -253,15 +157,15 @@ export default function Projects() {
       <div className="mx-auto max-w-7xl px-6 md:px-12 mt-10 space-y-10">
         {/* Search & Category Filter Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-zinc-800 pb-6">
-          {/* Category Filter Pills */}
-          <div className="flex flex-wrap items-center gap-2">
+          {/* Category Filter Pills (Scrollable with flex-1 & min-w-0 to prevent overlap) */}
+          <div className="flex-1 min-w-0 flex items-center gap-2 overflow-x-auto netflix-scrollbar py-1.5 pr-2">
             {projectCategories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`rounded-full px-4 py-1.5 text-xs font-bold transition-all duration-300 cursor-pointer ${selectedCategory === cat
-                    ? "bg-red-600 text-white shadow-[0_0_15px_rgba(229,9,20,0.6)] scale-105"
-                    : "bg-zinc-900 text-zinc-400 border border-zinc-800 hover:text-white hover:border-zinc-700"
+                className={`flex-shrink-0 rounded-full px-4 py-1.5 text-xs font-bold transition-all duration-300 cursor-pointer whitespace-nowrap ${selectedCategory === cat
+                  ? "bg-red-600 text-white shadow-[0_0_15px_rgba(229,9,20,0.6)] scale-105"
+                  : "bg-zinc-900 text-zinc-400 border border-zinc-800 hover:text-white hover:border-zinc-700"
                   }`}
               >
                 {cat}
@@ -269,15 +173,15 @@ export default function Projects() {
             ))}
           </div>
 
-          {/* Quick Search Bar for Projects & Tech Stacks */}
-          <div className="relative flex items-center min-w-[260px]">
+          {/* Quick Search Bar for Projects & Tech Stacks (Fixed width and flex-shrink-0) */}
+          <div className="relative flex items-center w-full md:w-72 flex-shrink-0">
             <Search className="absolute left-3 h-4 w-4 text-zinc-500" />
             <input
               type="text"
               placeholder="Search projects or tech (e.g. React, Node)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full rounded-full bg-zinc-900 pl-9 pr-4 py-2 text-xs text-white placeholder-zinc-500 border border-zinc-800 focus:border-red-600 focus:outline-none transition"
+              className="w-full rounded-full bg-zinc-900 pl-9 pr-8 py-2 text-xs text-white placeholder-zinc-500 border border-zinc-800 focus:border-red-600 focus:outline-none transition"
             />
             {searchQuery && (
               <button
@@ -293,16 +197,13 @@ export default function Projects() {
         {/* Projects Cards Grid */}
         {filteredProjects.length === 0 ? (
           <div className="rounded-xl bg-zinc-900/60 p-12 text-center border border-zinc-800">
-            <h3 className="text-xl font-bold text-white">No Projects Found</h3>
-            <p className="text-zinc-400 text-sm mt-2">
-              No original applications match your filter query "{searchQuery}".
-            </p>
+            <p className="text-lg text-zinc-400">No original projects found in this category.</p>
             <button
               onClick={() => {
                 setSelectedCategory("All Originals");
                 setSearchQuery("");
               }}
-              className="mt-6 rounded bg-red-600 px-6 py-2.5 text-xs font-bold text-white hover:bg-red-700 transition cursor-pointer"
+              className="mt-4 rounded bg-red-600 px-4 py-2 text-xs font-bold text-white hover:bg-red-700 cursor-pointer"
             >
               Reset Filters
             </button>
@@ -314,7 +215,7 @@ export default function Projects() {
                 key={proj.id}
                 className="group relative flex flex-col justify-between overflow-hidden rounded-xl bg-zinc-900/90 border border-zinc-800 transition-all duration-300 hover:scale-[1.03] hover:-translate-y-1.5 hover:border-red-600/80 hover:shadow-[0_10px_30px_rgba(0,0,0,0.9),0_0_25px_rgba(229,9,20,0.4)]"
               >
-                {/* Cover Image & Season Badge */}
+                {/* Cover Image & Movie Badge */}
                 <div className="relative aspect-video w-full overflow-hidden cursor-pointer" onClick={() => setActiveModalProject(proj)}>
                   <img
                     src={proj.coverImage}
@@ -332,7 +233,7 @@ export default function Projects() {
                   </div>
 
                   <div className="absolute top-3 right-3 rounded bg-black/70 px-2 py-0.5 text-[10px] font-bold text-zinc-300 backdrop-blur-md border border-zinc-700">
-                    {proj.season} {proj.episode}
+                    {proj.format || "Movie"}
                   </div>
                 </div>
 
@@ -394,15 +295,15 @@ export default function Projects() {
                     >
                       <Code className="h-4 w-4" />
                     </a>
-                    <a
+                    {proj.liveDemoUrl && <a
                       href={proj.liveDemoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-1 rounded bg-red-600 px-3 py-1 text-xs font-bold text-white hover:bg-red-700 transition cursor-pointer"
                     >
-                      <span>Demo</span>
+                      <span>Watch More</span>
                       <ExternalLink className="h-3 w-3" />
-                    </a>
+                    </a>}
                   </div>
                 </div>
               </div>
@@ -442,11 +343,11 @@ export default function Projects() {
             </div>
 
             {/* Modal Body Scroll Area */}
-            <div className="p-6 overflow-y-auto space-y-6 text-sm text-zinc-300 flex-1">
+            <div className="p-6 overflow-y-auto netflix-scrollbar space-y-6 text-sm text-zinc-300 flex-1">
               <div className="flex items-center gap-4 text-xs font-semibold border-b border-zinc-800 pb-3">
                 <span className="text-emerald-400 font-bold">{activeModalProject.matchScore}</span>
                 <span className="text-zinc-300 border border-zinc-700 px-2 py-0.5 rounded">
-                  {activeModalProject.season} {activeModalProject.episode}
+                  {activeModalProject.format || "Movie"}
                 </span>
                 <span className="text-zinc-400 font-bold">{activeModalProject.category}</span>
               </div>
@@ -508,7 +409,7 @@ export default function Projects() {
                 <span>View Source Code</span>
               </a>
 
-              <a
+              {activeModalProject.liveDemoUrl && <a
                 href={activeModalProject.liveDemoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -516,7 +417,7 @@ export default function Projects() {
               >
                 <span>Launch Live Demo</span>
                 <ExternalLink className="h-3.5 w-3.5" />
-              </a>
+              </a>}
             </div>
           </div>
         </div>

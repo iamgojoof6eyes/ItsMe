@@ -136,11 +136,11 @@ export default function ReachMe() {
               <img
                 src={RaunakAvatar}
                 alt="Raunak"
-                className="h-16 w-16 rounded-full bg-zinc-800 p-1 border-2 border-red-600 object-cover shadow-lg"
+                className="h-16 w-16 rounded-full bg-zinc-800 p-1 border-2 border-red-600 object-fit shadow-lg"
               />
               <div>
                 <h3 className="text-lg font-bold text-white">Raunak</h3>
-                <p className="text-xs text-red-500 font-semibold mt-0.5">Lead Architect & Full-Stack Developer</p>
+                <p className="text-[11px] text-zinc-400 font-medium">Python & Web Scraping Specialist | Full-Stack Developer</p>
                 <div className="mt-2 flex items-center gap-2 text-[11px] text-zinc-400">
                   <MapPin className="h-3.5 w-3.5 text-zinc-500" />
                   <span>India (Remote Worldwide)</span>
@@ -149,6 +149,10 @@ export default function ReachMe() {
             </div>
 
             <div className="mt-6 border-t border-zinc-800/80 pt-4 space-y-2 text-xs text-zinc-300">
+              <div className="flex items-center justify-between">
+                <span className="text-zinc-500">Cast Alias:</span>
+                <span className="text-red-400 font-bold">Captain D Ezio</span>
+              </div>
               <div className="flex items-center justify-between">
                 <span className="text-zinc-500">Direct Email:</span>
                 <a href={`mailto:${contactEmail}`} className="text-red-400 font-bold hover:underline">

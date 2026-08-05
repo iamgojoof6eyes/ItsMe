@@ -70,9 +70,8 @@ export default function BlogCard({ blog, onMoreInfo }) {
                 e.stopPropagation();
                 setIsSaved(!isSaved);
               }}
-              className={`flex h-8 w-8 items-center justify-center rounded-full border border-zinc-600 bg-zinc-800/90 text-white transition hover:border-white hover:scale-110 active:scale-95 cursor-pointer ${
-                isSaved ? "bg-red-600 border-red-600" : ""
-              }`}
+              className={`flex h-8 w-8 items-center justify-center rounded-full border border-zinc-600 bg-zinc-800/90 text-white transition hover:border-white hover:scale-110 active:scale-95 cursor-pointer ${isSaved ? "bg-red-600 border-red-600" : ""
+                }`}
               title="Add to My List"
             >
               <Plus className="h-4 w-4" />
@@ -82,9 +81,8 @@ export default function BlogCard({ blog, onMoreInfo }) {
                 e.stopPropagation();
                 setIsLiked(!isLiked);
               }}
-              className={`flex h-8 w-8 items-center justify-center rounded-full border border-zinc-600 bg-zinc-800/90 text-white transition hover:border-white hover:scale-110 active:scale-95 cursor-pointer ${
-                isLiked ? "text-red-500 border-red-500" : ""
-              }`}
+              className={`flex h-8 w-8 items-center justify-center rounded-full border border-zinc-600 bg-zinc-800/90 text-white transition hover:border-white hover:scale-110 active:scale-95 cursor-pointer ${isLiked ? "text-red-500 border-red-500" : ""
+                }`}
               title="Like"
             >
               <ThumbsUp className="h-3.5 w-3.5" />
