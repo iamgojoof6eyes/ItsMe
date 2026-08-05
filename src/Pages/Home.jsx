@@ -17,7 +17,7 @@ import {
   Users,
 } from "lucide-react";
 import Logo from "@/assets/R.svg";
-import { getAllBlogs } from "@/utils/blogLoader";
+import { getAllBlogs, getBlogsByProfile } from "@/utils/blogLoader";
 import BlogCard from "@/components/Blog/BlogCard";
 import BlogPreviewModal from "@/components/Blog/BlogPreviewModal";
 
@@ -25,7 +25,8 @@ export default function Home() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const currentViewer = useSelector((state) => state.viewer.currentViewer);
-  const blogs = getAllBlogs();
+  const profileId = (currentViewer?.id || currentViewer?.name || "explorer").toLowerCase();
+  const blogs = getBlogsByProfile(profileId);
   const [previewBlog, setPreviewBlog] = useState(null);
 
   const handleSwitchProfile = () => {
@@ -33,7 +34,38 @@ export default function Home() {
     navigate("/", { replace: true });
   };
 
-  const profileId = (currentViewer?.id || currentViewer?.name || "explorer").toLowerCase();
+  const renderNoBlogsCard = (profileName = "Profile") => (
+    <div
+      onClick={() => navigate("/introduction")}
+      className="group relative w-full cursor-pointer overflow-hidden rounded-xl bg-gradient-to-r from-zinc-900 via-zinc-900 to-red-950/40 p-8 border border-zinc-800 transition-all duration-300 hover:scale-[1.01] hover:border-red-600 hover:shadow-[0_10px_25px_rgba(0,0,0,0.9),0_0_20px_rgba(229,9,20,0.4)] flex flex-col md:flex-row items-center justify-between gap-6"
+    >
+      <div className="flex items-center gap-4">
+        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-red-600/20 text-red-500 border border-red-600/40 group-hover:scale-110 transition-transform flex-shrink-0">
+          <UserCheck className="h-6 w-6" />
+        </div>
+        <div>
+          <span className="text-xs font-bold text-red-500 uppercase tracking-widest">
+            {profileName.toUpperCase()} SPOTLIGHT
+          </span>
+          <h3 className="text-xl font-bold text-white mt-1 group-hover:text-red-400 transition-colors">
+            No Documentaries for {profileName} Profile Yet
+          </h3>
+          <p className="text-zinc-400 text-xs md:text-sm mt-1">
+            Discover Raunak's complete background, core principles, engineering journey, and creative story in the About Me section.
+          </p>
+        </div>
+      </div>
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          navigate("/introduction");
+        }}
+        className="rounded-lg bg-red-600 px-6 py-3 text-xs font-bold text-white transition hover:bg-red-700 hover:scale-105 cursor-pointer whitespace-nowrap shadow-lg flex items-center gap-2"
+      >
+        <span>Behind The Scenes / About Me →</span>
+      </button>
+    </div>
+  );
 
   // Helper to render custom cards for skills / projects
   const renderSimpleCard = (title, category, subtitle, image, onClick, match = "98% Match") => (
@@ -159,12 +191,16 @@ export default function Home() {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
               {renderSimpleCard("About Me / Behind Scenes", "Biography", "Full Story & Principles", "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=800&auto=format&fit=crop", () => navigate("/introduction"), "99% Match")}
             </div>
+          </div>
 
-            <div>
-              <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-                <span className="h-4 w-1 bg-red-600 rounded-full inline-block" />
-                Technical Writing & System Docs
-              </h2>
+          <div>
+            <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+              <span className="h-4 w-1 bg-red-600 rounded-full inline-block" />
+              Technical Writing & System Docs
+            </h2>
+            {blogs.length === 0 ? (
+              renderNoBlogsCard("Recruiter")
+            ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {blogs.map((b) => (
                   <div key={b.slug} className="aspect-video w-full">
@@ -172,32 +208,33 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-            </div>
-
-            <div className="rounded-xl bg-gradient-to-r from-zinc-900 via-zinc-900 to-red-950/40 p-8 border border-zinc-800 flex flex-col md:flex-row items-center justify-between gap-6">
-              <div>
-                <span className="text-xs font-bold text-red-500 uppercase tracking-widest">
-                  RECRUITER QUICK ACTION
-                </span>
-                <h3 className="text-2xl font-bold text-white mt-1">Interested in working together?</h3>
-                <p className="text-zinc-400 text-sm mt-1">
-                  Reach out directly via email, GitHub, or LinkedIn to schedule an interview or request code samples.
-                </p>
-              </div>
-              <button
-                onClick={() => navigate("/contact")}
-                className="rounded-lg bg-red-600 px-8 py-3.5 font-bold text-white transition hover:bg-red-700 hover:scale-105 cursor-pointer whitespace-nowrap shadow-lg"
-              >
-                Contact Candidate Now →
-              </button>
-            </div>
+            )}
           </div>
 
-          {previewBlog && (
-            <BlogPreviewModal blog={previewBlog} allBlogs={blogs} onClose={() => setPreviewBlog(null)} />
-          )}
+          <div className="rounded-xl bg-gradient-to-r from-zinc-900 via-zinc-900 to-red-950/40 p-8 border border-zinc-800 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+              <span className="text-xs font-bold text-red-500 uppercase tracking-widest">
+                RECRUITER QUICK ACTION
+              </span>
+              <h3 className="text-2xl font-bold text-white mt-1">Interested in working together?</h3>
+              <p className="text-zinc-400 text-sm mt-1">
+                Reach out directly via email, GitHub, or LinkedIn to schedule an interview or request code samples.
+              </p>
+            </div>
+            <button
+              onClick={() => navigate("/contact")}
+              className="rounded-lg bg-red-600 px-8 py-3.5 font-bold text-white transition hover:bg-red-700 hover:scale-105 cursor-pointer whitespace-nowrap shadow-lg"
+            >
+              Contact Candidate Now →
+            </button>
+          </div>
         </div>
-        );
+
+        {previewBlog && (
+          <BlogPreviewModal blog={previewBlog} allBlogs={blogs} onClose={() => setPreviewBlog(null)} />
+        )}
+      </div>
+    );
   }
 
         // -------------------------------------------------------------
@@ -300,17 +337,21 @@ export default function Home() {
             </div>
 
             <div>
-              <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+              <h2 className="text-xl font-bold text-white mb-4 flex items-center gap-2 font-mono">
                 <span className="h-4 w-1 bg-red-600 rounded-full inline-block" />
                 Architecture & Tech Documentaries
               </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                {blogs.map((b) => (
-                  <div key={b.slug} className="aspect-video w-full">
-                    <BlogCard blog={b} onMoreInfo={(blog) => setPreviewBlog(blog)} />
-                  </div>
-                ))}
-              </div>
+              {getBlogsByProfile("Developer").length === 0 ? (
+                renderNoBlogsCard("Developer")
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                  {getBlogsByProfile("Developer").map((b) => (
+                    <div key={b.slug} className="aspect-video w-full">
+                      <BlogCard blog={b} onMoreInfo={(blog) => setPreviewBlog(blog)} />
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
 
@@ -401,13 +442,17 @@ export default function Home() {
                 <span className="h-4 w-1 bg-red-600 rounded-full inline-block" />
                 Featured Documentary Series
               </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                {blogs.map((b) => (
-                  <div key={b.slug} className="aspect-video w-full">
-                    <BlogCard blog={b} onMoreInfo={(blog) => setPreviewBlog(blog)} />
-                  </div>
-                ))}
-              </div>
+              {getBlogsByProfile("Reader").length === 0 ? (
+                renderNoBlogsCard("Reader")
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                  {getBlogsByProfile("Reader").map((b) => (
+                    <div key={b.slug} className="aspect-video w-full">
+                      <BlogCard blog={b} onMoreInfo={(blog) => setPreviewBlog(blog)} />
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
 
@@ -518,13 +563,17 @@ export default function Home() {
                 <span className="h-4 w-1 bg-red-600 rounded-full inline-block" />
                 Featured Documentaries (Blogs)
               </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                {blogs.map((b) => (
-                  <div key={b.slug} className="aspect-video w-full">
-                    <BlogCard blog={b} onMoreInfo={(blog) => setPreviewBlog(blog)} />
-                  </div>
-                ))}
-              </div>
+              {getBlogsByProfile("Explorer").length === 0 ? (
+                renderNoBlogsCard("Explorer")
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                  {getBlogsByProfile("Explorer").map((b) => (
+                    <div key={b.slug} className="aspect-video w-full">
+                      <BlogCard blog={b} onMoreInfo={(blog) => setPreviewBlog(blog)} />
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
 

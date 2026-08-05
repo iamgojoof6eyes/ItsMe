@@ -72,8 +72,21 @@ function parseFrontMatter(rawContent, filename = "") {
   }
 
   // Default fallback image
-  const defaultImage =
-    "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?q=80&w=1200&auto=format&fit=crop";
+  // Parse target profiles (e.g. profiles: ["recruiter", "developer"] or profile: "recruiter" or profile: "all")
+  let targetProfiles = ["all"];
+  let hasExplicitProfiles = false;
+
+  if (metadata.profiles) {
+    hasExplicitProfiles = true;
+    targetProfiles = Array.isArray(metadata.profiles)
+      ? metadata.profiles.map((p) => String(p).toLowerCase().trim())
+      : [String(metadata.profiles).toLowerCase().trim()];
+  } else if (metadata.profile) {
+    hasExplicitProfiles = true;
+    targetProfiles = Array.isArray(metadata.profile)
+      ? metadata.profile.map((p) => String(p).toLowerCase().trim())
+      : [String(metadata.profile).toLowerCase().trim()];
+  }
 
   return {
     title: metadata.title || "Untitled Documentary",
@@ -93,6 +106,8 @@ function parseFrontMatter(rawContent, filename = "") {
       metadata.authorAvatar || "https://api.dicebear.com/7.x/bottts/svg?seed=Raunak",
     tags: Array.isArray(metadata.tags) ? metadata.tags : ["Documentary", "Tech"],
     featured: metadata.featured === true,
+    profiles: targetProfiles,
+    hasExplicitProfiles,
     content,
     raw: rawContent,
   };
@@ -116,6 +131,63 @@ export function getAllBlogs() {
 
   // Sort by date descending
   return blogs.sort((a, b) => new Date(b.date) - new Date(a.date));
+}
+
+export function getBlogsByProfile(profileId) {
+  const blogs = getAllBlogs();
+  if (!profileId) return blogs;
+
+  const pid = profileId.toLowerCase().trim();
+
+  return blogs.filter((b) => {
+    const profs = b.profiles || ["all"];
+
+    // 1. Explicit frontmatter match
+    if (profs.includes("all")) return true;
+    if (profs.some((p) => pid.includes(p) || p.includes(pid))) return true;
+
+    // If explicit profiles were specified on the blog but didn't match pid, exclude it
+    if (b.hasExplicitProfiles) {
+      return false;
+    }
+
+    // 2. Smart category/tag fallback for blogs without explicit profile field
+    const cat = (b.category || "").toLowerCase();
+    const tags = (b.tags || []).map((t) => t.toLowerCase());
+
+    if (pid.includes("recruiter")) {
+      return (
+        cat.includes("system") ||
+        cat.includes("architecture") ||
+        cat.includes("recruiter") ||
+        cat.includes("career") ||
+        cat.includes("docs") ||
+        tags.some((t) =>
+          ["system", "architecture", "career", "docs", "engineering", "recruiter"].includes(t)
+        )
+      );
+    }
+
+    if (pid.includes("developer")) {
+      return (
+        cat.includes("dsa") ||
+        cat.includes("dev") ||
+        cat.includes("tech") ||
+        cat.includes("code") ||
+        cat.includes("system") ||
+        cat.includes("architecture") ||
+        tags.some((t) =>
+          ["dsa", "optimization", "code", "react", "vite", "architecture", "dev", "tech"].includes(t)
+        )
+      );
+    }
+
+    if (pid.includes("reader") || pid.includes("explorer")) {
+      return true;
+    }
+
+    return true;
+  });
 }
 
 export function getBlogBySlug(slug) {
