@@ -4,12 +4,16 @@
  */
 
 // Helper to parse YAML frontmatter from raw markdown strings
+import RaunakLogo from "@/assets/Raunak.png";
 function parseFrontMatter(rawContent, filename = "") {
-  const frontMatterRegex = /^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/;
-  const match = rawContent.match(frontMatterRegex);
+  const defaultImage = RaunakLogo;
+  // Strip BOM if present and any leading whitespace
+  const sanitizedContent = rawContent.replace(/^\uFEFF/, "").trimStart();
+  const frontMatterRegex = /^---[ \t]*\r?\n([\s\S]*?)\r?\n---[ \t]*\r?\n?([\s\S]*)$/;
+  const match = sanitizedContent.match(frontMatterRegex);
 
   let metadata = {};
-  let content = rawContent;
+  let content = sanitizedContent;
 
   if (match) {
     const yamlString = match[1];

@@ -1,22 +1,18 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
+import Logo from "@/assets/R.svg";
+import { playNetflixAudio } from "@/utils/audio";
+import { getAllBlogs, getBlogBySlug } from "@/utils/blogLoader";
 import {
   ArrowLeft,
-  BookOpen,
   Calendar,
   Check,
   Clock,
   Copy,
-  Film,
-  Play,
-  Share2,
-  ThumbsUp,
+  ThumbsUp
 } from "lucide-react";
-import Logo from "@/assets/R.svg";
-import { getAllBlogs, getBlogBySlug } from "@/utils/blogLoader";
-import { playNetflixAudio } from "@/utils/audio";
+import { useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown";
+import { useNavigate, useParams } from "react-router-dom";
+import remarkGfm from "remark-gfm";
 
 // Code block with Copy button component
 function CodeBlock({ children, className }) {

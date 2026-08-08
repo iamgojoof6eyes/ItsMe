@@ -27,3 +27,12 @@
   scrollbar-width: thin;
   scrollbar-color: rgba(229, 9, 20, 0.6) rgba(24, 24, 27, 0.6);
 }
+
+/* Blog Markdown Links */
+article a {
+  color: #ef4444;
+  text-decoration: underline;
+}
+article a:hover {
+  color: #f87171;
+}

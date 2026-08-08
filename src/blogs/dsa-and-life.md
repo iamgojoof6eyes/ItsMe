@@ -11,9 +11,9 @@ episode: "E1"
 coverImage: "https://images.unsplash.com/vector-1759248692212-bebd37ced013?q=80&w=1267&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 synopsis: "Uncovering how DSA can help improve the scalablity of the product not in just programming but in our daily life too"
 author: "Raunak"
-authorRole: "Studen & Explorer"
+authorRole: "Student & Explorer"
 authorAvatar: "https://api.dicebear.com/7.x/bottts/svg?seed=Raunak"
-tags: ["DSA", "Optimization"]
+tags: ["DSA", "Optimization", "Blog", "Thought"]
 featured: true
 ---
 

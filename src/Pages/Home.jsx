@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import Logo from "@/assets/R.svg";
+import BlogCard from "@/components/Blog/BlogCard";
+import BlogPreviewModal from "@/components/Blog/BlogPreviewModal";
 import { clearViewer } from "@/store/viewer";
+import { getBlogsByProfile } from "@/utils/blogLoader";
 import {
-  Award,
   BookOpen,
   Briefcase,
   Code,
@@ -11,15 +11,13 @@ import {
   FileText,
   Mail,
   Play,
-  Sparkles,
   Terminal,
   UserCheck,
-  Users,
+  Users
 } from "lucide-react";
-import Logo from "@/assets/R.svg";
-import { getAllBlogs, getBlogsByProfile } from "@/utils/blogLoader";
-import BlogCard from "@/components/Blog/BlogCard";
-import BlogPreviewModal from "@/components/Blog/BlogPreviewModal";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -29,10 +27,10 @@ export default function Home() {
   const blogs = getBlogsByProfile(profileId);
   const [previewBlog, setPreviewBlog] = useState(null);
 
-  const handleSwitchProfile = () => {
-    dispatch(clearViewer());
-    navigate("/", { replace: true });
-  };
+  // const handleSwitchProfile = () => {
+  //   dispatch(clearViewer());
+  //   navigate("/", { replace: true });
+  // };
 
   const renderNoBlogsCard = (profileName = "Profile") => (
     <div
@@ -113,12 +111,6 @@ export default function Home() {
               CANDIDATE REEL
             </span>
           </div>
-          <button
-            onClick={handleSwitchProfile}
-            className="text-xs font-semibold text-zinc-400 hover:text-white transition cursor-pointer"
-          >
-            Switch Profile →
-          </button>
         </div>
 
         {/* Hero Billboard */}
@@ -254,12 +246,6 @@ export default function Home() {
                 DEV MODE
               </span>
             </div>
-            <button
-              onClick={handleSwitchProfile}
-              className="text-xs text-zinc-400 hover:text-white transition cursor-pointer font-sans"
-            >
-              Switch Profile →
-            </button>
           </div>
 
           {/* Hero Billboard */}
@@ -376,12 +362,6 @@ export default function Home() {
                 Profile: <strong className="text-white">Reader & Article Enthusiast</strong>
               </span>
             </div>
-            <button
-              onClick={handleSwitchProfile}
-              className="text-xs font-semibold text-zinc-400 hover:text-white transition cursor-pointer"
-            >
-              Switch Profile →
-            </button>
           </div>
 
           {/* Hero Billboard */}
@@ -476,12 +456,6 @@ export default function Home() {
                 Profile: <strong className="text-white">Explorer Mode</strong>
               </span>
             </div>
-            <button
-              onClick={handleSwitchProfile}
-              className="text-xs font-semibold text-zinc-400 hover:text-white transition cursor-pointer"
-            >
-              Switch Profile →
-            </button>
           </div>
 
           {/* Hero Billboard */}
