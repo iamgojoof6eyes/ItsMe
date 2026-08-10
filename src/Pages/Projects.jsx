@@ -1,31 +1,25 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import Logo from "@/assets/R.svg";
 import {
-  Briefcase,
   CheckCircle2,
   ChevronRight,
   Code,
   ExternalLink,
-  Filter,
-  Globe,
   Layers,
   Play,
   Search,
-  Sparkles,
-  Star,
-  Terminal,
-  X,
-  Zap,
+  X
 } from "lucide-react";
-import Logo from "@/assets/R.svg";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const projectCategories = [
   "All Originals",
-  "Full-Stack Web Apps",
-  "Frontend Systems",
-  "Developer Tools & APIs",
   "AI & Intelligent Apps",
-  "Others"
+  "Backend Systems",
+  "Developer Tools & APIs",
+  "Frontend Systems",
+  "Full-Stack Web Apps",
+  "Others",
 ];
 
 const projectsList = [
@@ -47,7 +41,29 @@ const projectsList = [
       "New data structure with implementations and where to apply",
     ],
   },
+  {
+    id: "netflix-portfolio",
+    title: "Netflix styled portfolio",
+    category: "Frontend Systems",
+    format: "Movie",
+    matchScore: "98% Match",
+    badge: "UI/UX",
+    coverImage: "https://plus.unsplash.com/premium_vector-1734421474117-e5e4c5f47bfb?q=80&w=977&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    synopsis: "A Netflix Styled personal portfolio which have a blog page too",
+    techStack: ["React", "Vite", "Tailwind", "React-Redux"],
+    liveDemoUrl: "https://its-me-pi.vercel.app/home",
+    githubUrl: "https://github.com/iamgojoof6eyes/ItsMe",
+    architectureHighlights: [
+      "Netflix Styled UI/UX",
+      "Redux state management",
+      "React Router DOM for path managements",
+    ],
+  },
 ];
+
+const availableCategories = projectCategories.filter(
+  (cat) => cat === "All Originals" || projectsList.some((proj) => proj.category === cat)
+);
 
 export default function Projects() {
   const navigate = useNavigate();
@@ -67,7 +83,7 @@ export default function Projects() {
 
     return matchesCategory && matchesSearch;
   });
-
+  
   const featuredProject = projectsList[0];
 
   return (
@@ -159,7 +175,7 @@ export default function Projects() {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-zinc-800 pb-6">
           {/* Category Filter Pills (Scrollable with flex-1 & min-w-0 to prevent overlap) */}
           <div className="flex-1 min-w-0 flex items-center gap-2 overflow-x-auto netflix-scrollbar py-1.5 pr-2">
-            {projectCategories.map((cat) => (
+            {availableCategories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}

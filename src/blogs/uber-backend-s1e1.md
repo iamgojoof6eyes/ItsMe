@@ -1,7 +1,7 @@
 ﻿---
-title: "How Uber handles backend"
+title: "How Uber handles backend S1 E1"
 slug: "uber-backend-s1e1"
-date: "2026-07-25"
+date: "2026-08-08"
 readTime: "5 min read"
 category: "Tech"
 matchScore: "84% Match"
