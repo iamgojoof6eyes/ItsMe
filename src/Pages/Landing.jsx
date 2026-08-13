@@ -109,7 +109,7 @@ export default function Landing() {
         </p>
       </div>
 
-      {/* Skip / Replay Intro Controls
+      {/* Skip / Replay Intro Controls */}
       {animState !== "corner" && (
         <button
           onClick={skipIntro}
@@ -117,9 +117,9 @@ export default function Landing() {
         >
           Skip Intro →
         </button>
-      )} */}
+      )}
 
-      {animState === "corner" && (
+      {/* {animState === "corner" && (
         <button
           onClick={startAnimation}
           className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-full bg-zinc-900/80 px-4 py-2 text-xs font-semibold text-zinc-400 backdrop-blur-md border border-zinc-800 transition hover:text-white hover:border-zinc-700 cursor-pointer"
@@ -128,7 +128,7 @@ export default function Landing() {
           <RotateCcw className="h-3.5 w-3.5" />
           <span>Replay Intro</span>
         </button>
-      )}
+      )} */}
 
       {/* Who's Watching Profile Selection (Fades in when R moves to corner) */}
       <div
