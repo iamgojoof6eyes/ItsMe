@@ -46,7 +46,7 @@ const episodes = [
   {
     season: "S1",
     episode: "E2",
-    title: "The Expolration",
+    title: "The Exploration",
     tagline: "A journey to the next step",
     description:
       "I started with the thought of building a masterpiece game, but then started to explore the possibilities of development, what it can achieve, what can I do with this, then I finally got to know about backend and most complex things. And how it can happen that I avoid complex things so I just jumped into it.",

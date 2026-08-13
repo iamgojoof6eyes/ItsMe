@@ -109,7 +109,7 @@ export default function Landing() {
         </p>
       </div>
 
-      {/* Skip / Replay Intro Controls */}
+      {/* Skip / Replay Intro Controls
       {animState !== "corner" && (
         <button
           onClick={skipIntro}
@@ -117,7 +117,7 @@ export default function Landing() {
         >
           Skip Intro →
         </button>
-      )}
+      )} */}
 
       {animState === "corner" && (
         <button
