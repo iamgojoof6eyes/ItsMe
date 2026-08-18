@@ -1,11 +1,11 @@
-import { AboutMe, Achivements, Blog, BlogPost, Home, Landing, NotFound, Projects, ReachMe, WhoWatching } from '@/Pages'
+import { AboutMe, Achivements, Blog, BlogPost, Home, Landing, NotFound, Projects, ReachMe } from '@/Pages'
 import store from '@/store/store.js'
 import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import App from './App.jsx'
-import './index.css'
 import CheckWatching from './components/CheckWatching.jsx'
+import './index.css'
 
 
 const routes = createBrowserRouter(
@@ -32,11 +32,11 @@ const routes = createBrowserRouter(
         },
         {
           path: "documentary",
-          element: <CheckWatching><Blog /></CheckWatching>
+          element: <CheckWatching bypass={true}><Blog /></CheckWatching>
         },
         {
           path: "documentary/:slug",
-          element: <CheckWatching><BlogPost /></CheckWatching>
+          element: <CheckWatching bypass={true}><BlogPost /></CheckWatching>
         },
         {
           path: "originals",
